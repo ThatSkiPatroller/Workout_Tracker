@@ -16,17 +16,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workoutdb", {
   useFindAndModify: false
 });
 
-// routes
-// app.post("/submit", ({ body }, res) => {
-//     User.create(body)
-//       .then(dbUser => {
-//         res.json(dbUser);
-//       })
-//       .catch(err => {
-//         res.json(err);
-//     });
-// });
-
 app.use(routes);
 
 app.listen(PORT, () => {
