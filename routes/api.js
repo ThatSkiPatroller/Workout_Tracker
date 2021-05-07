@@ -2,6 +2,7 @@ const router = require("express").Router();
 const db = require("../models");
 
 router.get('/workouts', (req, res) => {
+    console.log("route hit");
     db.Workout.aggregate([
         {
             $addFields: {
@@ -11,6 +12,7 @@ router.get('/workouts', (req, res) => {
     ])
     .then((dbWorkout) => {
         res.json(dbWorkout);
+        console.log(dbWorkout)
     })
     .catch((err) => {
         res.json(err)
@@ -43,7 +45,7 @@ router.put('/workouts/:id', (req, res) => {
 })
 
 router.post('/workouts', (req, res) => {
-    db.Workout.find({})
+    db.Workout.create(req.body)
     .then((dbWorkout) => {
         res.json(dbWorkout)
     })
